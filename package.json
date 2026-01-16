@@ -1,6 +1,7 @@
 {
   "name": "venda-moveis-galeria",
   "private": true,
+  "description": "Landing page moderna e minimalista (React + Vite) para venda de móveis residenciais (Moving Sale).",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
