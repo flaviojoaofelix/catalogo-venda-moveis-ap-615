@@ -42,4 +42,4 @@ Criação de uma landing page moderna e responsiva para atuar como catálogo/gal
 - [/] Ajustes de responsividade
 - [ ] Otimização de performance (Lazy loading, formatos modernos)
 - [ ] SEO básico
-- [ ] Documentação final
+- [/] Documentação final
