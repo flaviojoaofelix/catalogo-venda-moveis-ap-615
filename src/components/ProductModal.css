@@ -179,3 +179,10 @@
   opacity: 1;
   border-color: var(--color-accent);
 }
+
+.product-modal__thumbnail-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}

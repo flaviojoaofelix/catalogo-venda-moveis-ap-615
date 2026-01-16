@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { Product } from '../types';
 import { getAssetUrl } from '../utils/assets';
+import { CloseIcon } from './icons/CloseIcon';
 import './ProductModal.css';
 
 interface ProductModalProps {
@@ -10,6 +11,8 @@ interface ProductModalProps {
 
 export function ProductModal({ product, onClose }: ProductModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % product.media.length);
@@ -19,14 +22,49 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
     setCurrentIndex((prev) => (prev - 1 + product.media.length) % product.media.length);
   }, [product.media.length]);
 
+  // Focus Trap
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') handleNext();
-      if (e.key === 'ArrowLeft') handlePrev();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    previousFocus.current = document.activeElement as HTMLElement;
+    const modalElement = modalRef.current;
+
+    if (modalElement) {
+      modalElement.focus();
+
+      const focusableElements = modalElement.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      };
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
+        if (e.key === 'ArrowRight') handleNext();
+        if (e.key === 'ArrowLeft') handlePrev();
+        handleTabKey(e);
+      };
+
+      modalElement.addEventListener('keydown', handleKeyDown);
+      return () => {
+        modalElement.removeEventListener('keydown', handleKeyDown);
+        previousFocus.current?.focus();
+      };
+    }
   }, [onClose, handleNext, handlePrev]);
 
   const currentMedia = product.media[currentIndex];
@@ -39,7 +77,11 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
         className='product-modal'
         role='dialog'
         aria-modal='true'
+        aria-labelledby='modal-title'
+        aria-describedby='modal-desc'
         onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
+        ref={modalRef}
       >
         <button
           type='button'
@@ -47,7 +89,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
           onClick={onClose}
           aria-label='Fechar'
         >
-          ✕
+          <CloseIcon aria-hidden='true' />
         </button>
         <div className='product-modal__body'>
           <div className='product-modal__media-section'>
@@ -98,7 +140,6 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                       key={media.src}
                       className={`product-modal__thumbnail-btn ${currentIndex === idx ? 'active' : ''}`}
                       onClick={() => setCurrentIndex(idx)}
-                      style={{ padding: 0, border: 'none', background: 'transparent' }}
                     >
                       <img
                         src={getAssetUrl(media.src)}
@@ -112,8 +153,12 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
             )}
           </div>
           <div className='product-modal__details'>
-            <h2 className='product-modal__title'>{product.title}</h2>
-            <p className='product-modal__description'>{product.description}</p>
+            <h2 id='modal-title' className='product-modal__title'>
+              {product.title}
+            </h2>
+            <p id='modal-desc' className='product-modal__description'>
+              {product.description}
+            </p>
             <div className='product-modal__price'>
               {product.price > 0 ? `R$ ${product.price.toLocaleString('pt-BR')}` : 'Sob Consulta'}
             </div>

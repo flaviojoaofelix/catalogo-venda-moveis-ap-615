@@ -1,7 +1,7 @@
 import * as v from 'valibot';
-import { ProductSchema } from '../schemas/product';
+import { ProductSchema, type Product } from '../schemas/product';
 
-const rawProducts: unknown[] = [
+const rawProducts = [
   {
     id: '1',
     title: 'Sofá Retrátil Suede Muito Confortável - Estrutura Reforçada',
@@ -36,7 +36,7 @@ const rawProducts: unknown[] = [
     description:
       'Armário estilo closet aberto, super moderno e prático. Estrutura de metal preto reforçada. Módulos com cabideiros, prateleiras e 4 gavetas grandes. Perfeito para visualizar e organizar todas as roupas e sapatos.',
     price: 900,
-    available: true,
+    available: false,
     media: [
       { type: 'image', src: '/assets/20260113_192808.jpg' },
       { type: 'image', src: '/assets/20260113_192828.jpg' },
@@ -62,7 +62,7 @@ const rawProducts: unknown[] = [
     description:
       'Cortina branca de ilhós, super conservada. Tecido leve que deixa o ambiente claro e aconchegante, mas consegue segurar bem o sol. Acompanha o varão e suportes.',
     price: 100,
-    available: true,
+    available: false,
     media: [{ type: 'image', src: '/assets/20260113_200424.jpg' }],
   },
   {
@@ -71,7 +71,7 @@ const rawProducts: unknown[] = [
     description:
       'Cama completa (Box + Colchão) em ótimo estado. Marca: Ortobom (Linha Pró-Saúde Firme). Base branca em corino (fácil limpeza). Colchão de espuma firme e confortável. Pés prateados. Medidas: 1,88m x 0,88m x 18cm de altura',
     price: 250,
-    available: true,
+    available: false,
     media: [
       { type: 'image', src: '/assets/20260113_200446.jpg' },
       { type: 'image', src: '/assets/20260113_200455.jpg' },
@@ -84,7 +84,7 @@ const rawProducts: unknown[] = [
     description:
       'Guarda-roupa branco com detalhe amadeirado, super conservado. Porta inteira de espelho. Sistema de correr (não ocupa espaço). Interno completo com prateleiras e cabideiro. Ideal para quarto de solteiro ou casal compacto.',
     price: 300,
-    available: true,
+    available: false,
     media: [
       { type: 'image', src: '/assets/20260113_200624.jpg' },
       { type: 'image', src: '/assets/20260113_200646.jpg' },
@@ -97,7 +97,7 @@ const rawProducts: unknown[] = [
     description:
       'Cômoda branca linda, estilo penteadeira/organizador. Tampo de vidro transparente. 1ª gaveta com divisórias para acessórios/joias. + 4 gavetões espaçosos para roupas. Design moderno e clean.',
     price: 500,
-    available: true,
+    available: false,
     media: [
       { type: 'image', src: '/assets/20260113_200717.jpg' },
       { type: 'image', src: '/assets/20260113_200725.jpg' },
@@ -110,29 +110,9 @@ const rawProducts: unknown[] = [
     description:
       'Rack moderno em ótimo estado! Cor branca com detalhe em madeira. 2 portas laterais + nichos para eletrônicos. Design clean que combina com tudo.',
     price: 300,
-    available: true,
+    available: false,
     media: [{ type: 'image', src: '/assets/IMG-20260113-WA0023.jpeg' }],
   },
-  // {
-  //   id: '8',
-  //   title: 'Outros Móveis',
-  //   description: 'Diversos outros itens de decoração e mobília para sua casa.',
-  //   price: 0,
-  //   available: true,
-  //   media: [
-  //     { type: 'image', src: '/assets/20260113_200424.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200446.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200455.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200516.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200624.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200646.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200701.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200717.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200725.jpg' },
-  //     { type: 'image', src: '/assets/20260113_200735.jpg' },
-  //     { type: 'image', src: '/assets/IMG-20260113-WA0023.jpeg' },
-  //   ],
-  // },
-];
+] satisfies Product[];
 
 export const products = v.parse(v.array(ProductSchema), rawProducts);
