@@ -43,5 +43,6 @@ Criação de uma landing page moderna e responsiva para atuar como catálogo/gal
 - [x] Otimização de performance (React.memo, Validação Runtime)
 - [x] Code Review Rigoroso (TS Strict, Valibot, Clean Code)
 - [x] Implementar correções do Review (TS Strict, A11y, Styles)
+- [x] Status de Produto (Reservado/Vendido) e Badges Visuais
 - [ ] SEO básico
 - [/] Documentação final

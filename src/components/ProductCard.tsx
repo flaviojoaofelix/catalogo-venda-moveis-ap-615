@@ -38,6 +38,16 @@ export const ProductCard = memo(function ProductCard({ product, onClick }: Produ
           />
         )}
         {mediaCount > 1 && <span className='product-card__badge'>+{mediaCount - 1} mídias</span>}
+        {product.status === 'reserved' && (
+          <span className='product-card__status-badge product-card__status-badge--reserved'>
+            Reservado
+          </span>
+        )}
+        {product.status === 'sold' && (
+          <span className='product-card__status-badge product-card__status-badge--sold'>
+            Vendido
+          </span>
+        )}
       </div>
       <div className='product-card__content'>
         <h3 className='product-card__title'>{product.title}</h3>

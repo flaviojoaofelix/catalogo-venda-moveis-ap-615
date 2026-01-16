@@ -11,7 +11,7 @@ export const ProductSchema = v.object({
   title: v.string(),
   description: v.string(),
   price: v.number(),
-  available: v.boolean(),
+  status: v.picklist(['available', 'reserved', 'sold']),
   media: v.pipe(v.array(MediaSchema), v.minLength(1, 'Product must have at least one media item')),
 });
 

@@ -8,10 +8,10 @@ interface GalleryProps {
   onProductClick: (product: Product) => void;
 }
 
-type SortOption = 'title' | 'price' | 'available';
+type SortOption = 'title' | 'price' | 'status';
 
 export function Gallery({ products, onProductClick }: GalleryProps) {
-  const [sortOption, setSortOption] = React.useState<SortOption>('available');
+  const [sortOption, setSortOption] = React.useState<SortOption>('status');
 
   const sortedProducts = React.useMemo(() => {
     return [...products].sort((a, b) => {
@@ -22,8 +22,9 @@ export function Gallery({ products, onProductClick }: GalleryProps) {
       if (sortOption === 'price') {
         return a.price - b.price;
       }
-      if (sortOption === 'available') {
-        return a.available === b.available ? 0 : a.available ? -1 : 1;
+      if (sortOption === 'status') {
+        const statusWeight = { available: 0, reserved: 1, sold: 2 };
+        return statusWeight[a.status] - statusWeight[b.status];
       }
       return 0;
     });
@@ -41,7 +42,7 @@ export function Gallery({ products, onProductClick }: GalleryProps) {
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value as SortOption)}
         >
-          <option value='available'>Disponibilidade</option>
+          <option value='status'>Status</option>
           <option value='title'>Nome (A-Z)</option>
           <option value='price'>Preço (Menor - Maior)</option>
         </select>
