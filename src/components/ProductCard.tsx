@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { Product } from '../types';
 import './ProductCard.css';
 
@@ -8,10 +9,14 @@ interface ProductCardProps {
   onClick: (product: Product) => void;
 }
 
-export function ProductCard({ product, onClick }: ProductCardProps) {
-  // Use the first media item as the thumbnail
+export const ProductCard = memo(function ProductCard({ product, onClick }: ProductCardProps) {
+  // Safe access due to noUncheckedIndexedAccess
   const thumbnail = product.media[0];
   const mediaCount = product.media.length;
+
+  if (!thumbnail) {
+    return null; // Or a placeholder
+  }
 
   return (
     <button type='button' className='product-card' onClick={() => onClick(product)}>
@@ -42,4 +47,4 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       </div>
     </button>
   );
-}
+});

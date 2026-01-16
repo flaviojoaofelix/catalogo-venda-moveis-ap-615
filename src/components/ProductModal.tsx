@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { Product } from '../types';
 import { getAssetUrl } from '../utils/assets';
 import './ProductModal.css';
@@ -11,25 +11,27 @@ interface ProductModalProps {
 export function ProductModal({ product, onClose }: ProductModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % product.media.length);
+  }, [product.media.length]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + product.media.length) % product.media.length);
+  }, [product.media.length]);
+
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrev();
     };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, handleNext, handlePrev]);
 
   const currentMedia = product.media[currentIndex];
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev + 1) % product.media.length);
-  };
-
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev - 1 + product.media.length) % product.media.length);
-  };
+  if (!currentMedia) return null;
 
   return (
     <div className='product-modal-backdrop' role='presentation' onClick={onClose}>
@@ -70,7 +72,10 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                 <button
                   type='button'
                   className='product-modal__nav-btn product-modal__nav-btn--prev'
-                  onClick={handlePrev}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
                   aria-label='Anterior'
                 >
                   ←
@@ -78,7 +83,10 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                 <button
                   type='button'
                   className='product-modal__nav-btn product-modal__nav-btn--next'
-                  onClick={handleNext}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
                   aria-label='Próximo'
                 >
                   →

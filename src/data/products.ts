@@ -1,6 +1,7 @@
-import type { Product } from '../types';
+import * as v from 'valibot';
+import { ProductSchema } from '../schemas/product';
 
-export const products: Product[] = [
+const rawProducts: unknown[] = [
   {
     id: '1',
     title: 'Sofá Retrátil Suede Muito Confortável - Estrutura Reforçada',
@@ -133,3 +134,5 @@ export const products: Product[] = [
   //   ],
   // },
 ];
+
+export const products = v.parse(v.array(ProductSchema), rawProducts);

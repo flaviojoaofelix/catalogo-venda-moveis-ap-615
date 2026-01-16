@@ -39,7 +39,8 @@ Criação de uma landing page moderna e responsiva para atuar como catálogo/gal
 
 ### Fase 5: Polimento e Entrega
 
-- [/] Ajustes de responsividade
-- [ ] Otimização de performance (Lazy loading, formatos modernos)
+- [x] Ajustes de responsividade
+- [x] Otimização de performance (React.memo, Validação Runtime)
+- [x] Code Review Rigoroso (TS Strict, Valibot, Clean Code)
 - [ ] SEO básico
 - [/] Documentação final

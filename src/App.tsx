@@ -6,42 +6,28 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { products } from './data/products';
 import type { Product } from './types';
 import './styles/global.css';
+import './styles/App.css';
 
 function AppContent() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   return (
     <main>
-      <header
-        style={{
-          padding: 'var(--spacing-md)',
-          textAlign: 'center',
-          borderBottom: '1px solid var(--color-border)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 'var(--spacing-sm)',
-          position: 'relative',
-        }}
-      >
-        <div style={{ position: 'absolute', top: 'var(--spacing-md)', right: 'var(--spacing-md)' }}>
+      <header className='app-header'>
+        <div className='app-theme-toggle'>
           <ThemeToggle />
         </div>
         <div>
-          <h1 style={{ fontSize: 'var(--font-size-xl)', marginBottom: 'var(--spacing-xs)' }}>
-            Móveis à Venda
-          </h1>
-          <h2 style={{ fontSize: 'var(--font-size-md)', marginBottom: 'var(--spacing-xs)' }}>
-            AP 615 - Condomínio Jardim Imperiale / Itacorubi
-          </h2>
-          <p style={{ color: 'var(--color-text)', opacity: 0.8 }}>
+          <h1 className='app-title'>Móveis à Venda</h1>
+          <h2 className='app-subtitle'>AP 615 - Condomínio Jardim Imperiale / Itacorubi</h2>
+          <p className='app-description'>
             Estamos de mudança do nosso apartamento e estamos vendendo nossos móveis e
             eletrodomésticos.
           </p>
         </div>
       </header>
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--spacing-sm)' }}>
+      <div className='app-container'>
         <Gallery products={products} onProductClick={setSelectedProduct} />
       </div>
 
