@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Gallery } from './components/Gallery';
 import { ProductModal } from './components/ProductModal';
 import { ThemeToggle } from './components/ThemeToggle';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { products } from './data/products';
 import type { Product } from './types';
@@ -30,6 +31,8 @@ function AppContent() {
       <div className='app-container'>
         <Gallery products={products} onProductClick={setSelectedProduct} />
       </div>
+
+      <WhatsAppButton />
 
       {selectedProduct && (
         <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
