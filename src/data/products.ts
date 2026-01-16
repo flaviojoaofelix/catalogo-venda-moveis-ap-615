@@ -3,9 +3,9 @@ import type { Product } from '../types';
 export const products: Product[] = [
   {
     id: '1',
-    title: 'Sofá Retrátil',
+    title: 'Sofá Retrátil Suede Muito Confortável - Estrutura Reforçada',
     description:
-      'Sofá retrátil antigo mas de alta qualidade, tecido suede aveludado, cor cinza. Infelizmente com alguns detalhes nos braços feito pelos gatos.',
+      'Sofá retrátil em suede, cor cinza. Muito confortável e espaçoso. Estrutura forte e mecanismo funcionando. ⚠️ Possui detalhes estéticos nos braços (fiapos puxados por gatos), mas não interfere no conforto.',
     price: 500,
     available: true,
     media: [
