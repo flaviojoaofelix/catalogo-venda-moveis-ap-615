@@ -1,6 +1,8 @@
 import type { Product } from '../types';
 import './ProductCard.css';
 
+import { getAssetUrl } from '../utils/assets';
+
 interface ProductCardProps {
   product: Product;
   onClick: (product: Product) => void;
@@ -15,10 +17,16 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     <button type='button' className='product-card' onClick={() => onClick(product)}>
       <div className='product-card__image-container'>
         {thumbnail.type === 'video' ? (
-          <video src={thumbnail.src} className='product-card__image' muted loop playsInline />
+          <video
+            src={getAssetUrl(thumbnail.src)}
+            className='product-card__image'
+            muted
+            loop
+            playsInline
+          />
         ) : (
           <img
-            src={thumbnail.src}
+            src={getAssetUrl(thumbnail.src)}
             alt={product.title}
             className='product-card__image'
             loading='lazy'

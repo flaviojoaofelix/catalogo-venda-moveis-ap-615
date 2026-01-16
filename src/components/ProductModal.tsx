@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { Product } from '../types';
+import { getAssetUrl } from '../utils/assets';
 import './ProductModal.css';
 
 interface ProductModalProps {
@@ -50,14 +51,18 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
           <div className='product-modal__media-section'>
             {currentMedia.type === 'video' ? (
               <video
-                src={currentMedia.src}
+                src={getAssetUrl(currentMedia.src)}
                 className='product-modal__media'
                 controls
                 autoPlay
                 muted
               />
             ) : (
-              <img src={currentMedia.src} alt={product.title} className='product-modal__media' />
+              <img
+                src={getAssetUrl(currentMedia.src)}
+                alt={product.title}
+                className='product-modal__media'
+              />
             )}
 
             {product.media.length > 1 && (
@@ -88,7 +93,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                       style={{ padding: 0, border: 'none', background: 'transparent' }}
                     >
                       <img
-                        src={media.src}
+                        src={getAssetUrl(media.src)}
                         alt={`Thumbnail ${idx + 1}`}
                         className={`product-modal__thumbnail ${currentIndex === idx ? 'product-modal__thumbnail--active' : ''}`}
                       />

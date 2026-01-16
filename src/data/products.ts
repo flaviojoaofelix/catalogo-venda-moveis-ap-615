@@ -69,7 +69,7 @@ export const products: Product[] = [
     title: 'Cama Box Solteiro Ortobom - Colchão Pró-Saúde + Base Branca',
     description:
       'Cama completa (Box + Colchão) em ótimo estado. Marca: Ortobom (Linha Pró-Saúde Firme). Base branca em corino (fácil limpeza). Colchão de espuma firme e confortável. Pés prateados. Medidas: 1,88m x 0,88m x 18cm de altura',
-    price: 1800,
+    price: 250,
     available: true,
     media: [
       { type: 'image', src: '/assets/20260113_200446.jpg' },
