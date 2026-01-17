@@ -20,7 +20,11 @@ export const ProductCard = memo(function ProductCard({ product, onClick }: Produ
 
   return (
     <button type='button' className='product-card' onClick={() => onClick(product)}>
-      <div className='product-card__image-container'>
+      <div
+        className={`product-card__image-container ${
+          product.status === 'sold' ? 'product-card__image-container--sold' : ''
+        }`}
+      >
         {thumbnail.type === 'video' ? (
           <video
             src={getAssetUrl(thumbnail.src)}
