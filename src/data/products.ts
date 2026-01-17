@@ -49,7 +49,7 @@ const rawProducts = [
     description:
       'geladeira Electrolux Frost Free Duplex (2 portas), modelo DFN41 na cor branca. Produto em excelente estado de funcionamento, gela muito bem e possui painel Blue Touch externo para controle fácil de temperatura. ⚠️ Atenção, algumas peças de acrílico precisam ser trocadas!',
     price: 1000,
-    status: 'available',
+    status: 'sold',
     media: [
       { type: 'image', src: '/assets/20260113_192954.jpg' },
       { type: 'image', src: '/assets/20260113_193007.jpg' },
@@ -61,8 +61,8 @@ const rawProducts = [
     title: 'Cortina com varão',
     description:
       'Cortina branca de ilhós, super conservada. Tecido leve que deixa o ambiente claro e aconchegante, mas consegue segurar bem o sol. Acompanha o varão e suportes.',
-    price: 100,
-    status: 'sold',
+    price: 180,
+    status: 'reserved',
     media: [{ type: 'image', src: '/assets/20260113_200424.jpg' }],
   },
   {
@@ -71,7 +71,7 @@ const rawProducts = [
     description:
       'Cama completa (Box + Colchão) em ótimo estado. Marca: Ortobom (Linha Pró-Saúde Firme). Base branca em corino (fácil limpeza). Colchão de espuma firme e confortável. Pés prateados. Medidas: 1,88m x 0,88m x 18cm de altura',
     price: 250,
-    status: 'sold',
+    status: 'reserved',
     media: [
       { type: 'image', src: '/assets/20260113_200446.jpg' },
       { type: 'image', src: '/assets/20260113_200455.jpg' },
@@ -84,7 +84,7 @@ const rawProducts = [
     description:
       'Guarda-roupa branco com detalhe amadeirado, super conservado. Porta inteira de espelho. Sistema de correr (não ocupa espaço). Interno completo com prateleiras e cabideiro. Ideal para quarto de solteiro ou casal compacto.',
     price: 300,
-    status: 'sold',
+    status: 'reserved',
     media: [
       { type: 'image', src: '/assets/20260113_200624.jpg' },
       { type: 'image', src: '/assets/20260113_200646.jpg' },
@@ -110,7 +110,7 @@ const rawProducts = [
     description:
       'Rack moderno em ótimo estado! Cor branca com detalhe em madeira. 2 portas laterais + nichos para eletrônicos. Design clean que combina com tudo.',
     price: 300,
-    status: 'sold',
+    status: 'reserved',
     media: [{ type: 'image', src: '/assets/IMG-20260113-WA0023.jpeg' }],
   },
 ] satisfies Product[];
