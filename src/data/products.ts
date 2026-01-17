@@ -7,7 +7,7 @@ const rawProducts = [
     title: 'Sofá Retrátil Suede Muito Confortável - Estrutura Reforçada',
     description:
       'Sofá retrátil em suede, cor cinza. Muito confortável e espaçoso. Estrutura forte e mecanismo funcionando. ⚠️ Possui detalhes estéticos nos braços (fiapos puxados por gatos), mas não interfere no conforto.',
-    price: 500,
+    price: 475,
     status: 'available',
     media: [
       { type: 'image', src: '/assets/20260113_192454.jpg' },
@@ -48,7 +48,7 @@ const rawProducts = [
     title: 'Geladeira Electrolux Frost Free DFN41 - 371L - 220V',
     description:
       'geladeira Electrolux Frost Free Duplex (2 portas), modelo DFN41 na cor branca. Produto em excelente estado de funcionamento, gela muito bem e possui painel Blue Touch externo para controle fácil de temperatura. ⚠️ Atenção, algumas peças de acrílico precisam ser trocadas!',
-    price: 1000,
+    price: 1100,
     status: 'sold',
     media: [
       { type: 'image', src: '/assets/20260113_192954.jpg' },
@@ -61,7 +61,7 @@ const rawProducts = [
     title: 'Cortina com varão',
     description:
       'Cortina branca de ilhós, super conservada. Tecido leve que deixa o ambiente claro e aconchegante, mas consegue segurar bem o sol. Acompanha o varão e suportes.',
-    price: 180,
+    price: 250,
     status: 'reserved',
     media: [{ type: 'image', src: '/assets/20260113_200424.jpg' }],
   },
@@ -70,7 +70,7 @@ const rawProducts = [
     title: 'Cama Box Solteiro Ortobom - Colchão Pró-Saúde + Base Branca',
     description:
       'Cama completa (Box + Colchão) em ótimo estado. Marca: Ortobom (Linha Pró-Saúde Firme). Base branca em corino (fácil limpeza). Colchão de espuma firme e confortável. Pés prateados. Medidas: 1,88m x 0,88m x 18cm de altura',
-    price: 250,
+    price: 280,
     status: 'reserved',
     media: [
       { type: 'image', src: '/assets/20260113_200446.jpg' },
@@ -83,7 +83,7 @@ const rawProducts = [
     title: 'Guarda-Roupa Moderno com Porta de Espelho - Branco e Madeira',
     description:
       'Guarda-roupa branco com detalhe amadeirado, super conservado. Porta inteira de espelho. Sistema de correr (não ocupa espaço). Interno completo com prateleiras e cabideiro. Ideal para quarto de solteiro ou casal compacto.',
-    price: 300,
+    price: 350,
     status: 'reserved',
     media: [
       { type: 'image', src: '/assets/20260113_200624.jpg' },
@@ -96,7 +96,7 @@ const rawProducts = [
     title: 'Cômoda Branca com Tampo de Vidro e Organizador de Joias/Make',
     description:
       'Cômoda branca linda, estilo penteadeira/organizador. Tampo de vidro transparente. 1ª gaveta com divisórias para acessórios/joias. + 4 gavetões espaçosos para roupas. Design moderno e clean.',
-    price: 500,
+    price: 350,
     status: 'sold',
     media: [
       { type: 'image', src: '/assets/20260113_200717.jpg' },
@@ -109,7 +109,7 @@ const rawProducts = [
     title: 'Rack Branco Moderno com Detalhe Amadeirado - 2 Portas',
     description:
       'Rack moderno em ótimo estado! Cor branca com detalhe em madeira. 2 portas laterais + nichos para eletrônicos. Design clean que combina com tudo.',
-    price: 300,
+    price: 350,
     status: 'reserved',
     media: [{ type: 'image', src: '/assets/IMG-20260113-WA0023.jpeg' }],
   },
